@@ -15,7 +15,7 @@ client.on('warn', console.warn);
 client.on('error', console.error);
 
 client.on('ready', () => console.log('Natsuki en ligne')
-	 client.user.setActivity('.help',{type:'LISTENING'}));
+	client.user.setActivity('n!help',{type:'LISTENING'}));
 
 client.on('disconnect', () => console.log('Natsuki déconecter'));
 
@@ -95,7 +95,7 @@ Please provide a value to select one of the search results ranging from 1-10.
 		.setTitle("**Commande help**")
 		.addField("Musique",'`n!stop`, `n!play`, `n!skip`, `n!volume`, `n!np`, `n!queue`, `n!pause`, `n!resume`')
 		.addField("Fun","`en dev`")
-		.addField("Information","`en dev`")
+		.addField("Information","`n!ping`, `n!stats`, `n!help`")
 
 		msg.channel.send(helpembed);
 	} else if (command === 'stats') {
@@ -235,4 +235,4 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`🎶 : **${song.title}**`);
 }
 
-client.login(process.env.TOKEN);
+client.login(pross.env.TOKEN);
