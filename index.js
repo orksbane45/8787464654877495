@@ -14,7 +14,8 @@ client.on('warn', console.warn);
 
 client.on('error', console.error);
 
-client.on('ready', () => console.log('Natsuki en ligne'));
+client.on('ready', () => console.log('Natsuki en ligne')
+	 client.user.setActivity('.help',{type:'LISTENING'}));
 
 client.on('disconnect', () => console.log('Natsuki déconecter'));
 
@@ -97,6 +98,36 @@ Please provide a value to select one of the search results ranging from 1-10.
 		.addField("Information","`en dev`")
 
 		msg.channel.send(helpembed);
+	} else if (command === 'stats') {
+		  var distance = client.uptime;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  uptime = days + "d" + hours + "h" + minutes + "m" + seconds + "s";
+
+
+  const msgembed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+    .setAuthor(msg.author.tag, msg.author.avatarUrl)
+    .setTitle(`Stats de Natsuki`)
+    .setThumbnail(client.avatarURL)
+    .addField('Utilisateurs ',`${client.users.size}`, true)
+    .addField('Serveurs ',`${client.guilds.size}`, true)
+    .addField('Language/code ',`java script`, true)
+    .addField('Language/pays ',`Français / France`, true)
+    .addField('Créateur ', 'InsinityZ 夏樹#1349', true)
+    .addField('Uptime', uptime , true)
+    .setTimestamp()
+    msg.channel.send(msgembed);
+	} else if (command === 'ping') {
+msg.channel.sendMessage('Ping?')
+    .then(msg89 => {
+
+     if (msg89.createdTimestamp - msg.createdTimestamp <4000);
+            msg89.edit('Pong! **' + (msg89.createdTimestamp - msg.createdTimestamp) + 'ms**');
+});
+        
 
 	} else if (command === 'stop') {
 		if (!msg.member.voiceChannel) return msg.channel.send('Vous devez être dans un salon vocal pour pouvoir utilisez cette commande !');
@@ -104,13 +135,15 @@ Please provide a value to select one of the search results ranging from 1-10.
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('La musique a bien était stoppé !');
 		return undefined;
-	} else if (command === 'volume') { // commande vip
+	} else if (command === 'volume') { 
+		if (msg.author.id == 327176843709120512) {
 		if (!msg.member.voiceChannel) return msg.channel.send('Vous devez être dans un salon vocal pour pouvoir utilisez cette commande !');
 		if (!serverQueue) return msg.channel.send('There is nothing playing.');
 		if (!args[1]) return msg.channel.send(`Volume : **${serverQueue.volume}**`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
-		return msg.channel.send(`Volume modifier a : **${args[1]}**`);
+		return msg.channel.send(`Volume modifier a : **${args[1]}**`); 
+	}else { msg.reply('Commande VIP , Pour plus d\'informations contacter InsinityZ')}
 	} else if (command === 'np') {
 		if (!serverQueue) return msg.channel.send('There is nothing playing.');
 		return msg.channel.send(`🎶 Musique en cours : **${serverQueue.songs[0].title}**`);
@@ -173,7 +206,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 	} else {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
-		if (playlist) return undefined;
+		if (playlist) return undefined;  
 		else return msg.channel.send(`✅ **${song.title}** a était rajouter a la queue.`);
 	}
 	return undefined;
