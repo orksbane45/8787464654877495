@@ -1,4 +1,4 @@
-exports.TOKEN = 'NDcyMTYxMzkyMjk2OTg0NjI2.Djvdgg.fNB5DSBaq4tzgc1ga5kQIoo6mlg';
+exports.TOKEN = 'private';
 
 exports.PREFIX = 'n!';
 
