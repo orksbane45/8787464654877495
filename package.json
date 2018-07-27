@@ -1,0 +1,22 @@
+{
+  "name": "insinityz",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "InsinityZ",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "discord.js": "^11.3.2",
+    "ffmpeg": "0.0.4",
+    "fortnite": "^4.1.1",
+    "fs": "0.0.1-security",
+    "moment": "^2.22.1",
+    "mysql": "^2.15.0",
+    "simple-youtube-api": "^5.0.2",
+    "ytdl-core": "^0.21.1"
+  }
+}
