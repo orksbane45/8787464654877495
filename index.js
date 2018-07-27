@@ -14,8 +14,8 @@ client.on('warn', console.warn);
 
 client.on('error', console.error);
 
-client.on('ready', () => console.log('Natsuki en ligne')
-	client.user.setActivity('n!help',{type:'LISTENING'}));
+client.on('ready', () => console.log('Natsuki en ligne'));
+	client.user.setActivity('n!help',{type:'LISTENING'});
 
 client.on('disconnect', () => console.log('Natsuki déconecter'));
 
